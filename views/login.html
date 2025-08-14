@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book</title>
+    <link rel="shortcut icon" href="public/resources/white logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div class="dcover"></div>
+    <p class="pmess" id="pmess"></p>
+    <header class="header">
+        <img src="public/resources/hov-sec gradient logo.png" alt="logo">
+        <p>Contact Book</p>
+        <a href="https://wa.me/+2348165254494" target="_blank" rel="noopener" title="Chat" class="fab fa-whatsapp"></a>
+    </header>
+    <div class="div">
+        <form  class="login" id="loginform">
+            <h3>Login <a href="/" class="fas fa-home" title="Home"></a></h3>            
+            <input name='email' type='email' required placeholder='Email' autofocus id="useremail">
+            <input name='password' type='password' required placeholder='Password' id="userpassword" minlength="8">
+            <button type="button" title="Login" onclick="login()">Login</button>
+            <a href="/reset-password" title="Forgot Password" class="forgot-pass">Forgot Password?</a>
+            <p>Don't have an account? 
+                <a href="/register" class="form-label" title="Register">Register</a>
+            </p>
+        </form>
+    </div>
+    
+    <script src="public/allpages.js"></script>
+</body>
+</html>

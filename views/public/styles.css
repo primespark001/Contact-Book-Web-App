@@ -1,0 +1,1196 @@
+:root{
+    --primary-color: #77ace9;
+    --secondary-color: #50c1e3;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --border-color: #777;
+    --shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+    --hover-color: #002850;
+}
+.light-theme{
+    --primary-color: #77ace9;
+    --secondary-color: #50c1e3;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --border-color: #777;
+    --shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+    --hover-color: #002850;
+}
+.dark-theme{
+    --primary-color: #364d63;
+    --secondary-color: #205891;
+    --background-color: #1a1a1a;
+    --text-color: #f5f7fa;
+    --border-color: #444;
+    --shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    --hover-color: #4a90e2;
+}
+::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--border-color);
+    border-radius: 1000px;
+}
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--secondary-color);
+}
+::-webkit-scrollbar-gutter{
+    background-color: transparent;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+    border: .1em solid  transparent;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+* button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all .3s ease;
+    font-size: 1em;
+}
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+}
+footer{
+    width: 100%;
+    padding: .5em 2em;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    font-size: .8em;
+    margin-top: auto;
+}
+footer a{
+    color: var(--text-color);
+    font-weight: 500;
+    padding: .2em .5em; 
+    border-radius: .5em;
+}
+footer a:hover{
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    box-shadow: var(--shadow);
+}
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column ;
+    overflow-y: auto;
+}
+.pmess{
+    position: fixed;
+    width: 90dvw;
+    max-width: max-content;
+    top: -110%;
+    left: 50%;
+    z-index: 21;
+    transform: translateX(-50%);
+    box-shadow: var(--shadow);
+    background-color: #f5f7fa;
+    text-align: left;
+    padding: 1em;
+    font-weight: bold;
+    border-left: 5px solid transparent;
+}
+
+/* Header styles */
+header{
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .7em 1.2em;
+}
+header h1{
+    font-size: 1.2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+header h1 img{
+    height: 1.5em;
+    margin-right: .1em;
+}
+header .profile-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: .5em;
+}
+header .profile-bar a{
+    padding: .2em .5em;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    opacity: 0.8;
+}
+header .profile-bar a:hover{
+    border-color: var(--hover-color);
+    color: white;
+    background-color: var(--hover-color);
+    opacity: 1;
+}
+header .profile-bar label{
+    font-size: 1em;
+    cursor: pointer;
+    padding: .5em;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    transition: all .3s ease;
+}
+header .profile-bar label:hover{    
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    border-color: var(--hover-color);
+}
+
+header #menu[type="checkbox"]{
+    display: none;
+}
+
+header div:last-child{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+header div:last-child .menu{
+    transform: scale(0, 0);
+    position: absolute;
+    top: 110%;
+    right: 0;
+    z-index: 10;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+    padding: 1em;
+    width: 75dvw;
+    max-width: 25em;
+}
+.menucover{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;    
+    z-index: 9;
+}
+#menu:checked ~ .menu{
+    transform: scale(1, 1);
+}
+#menu:checked ~ .menucover{
+    display: block;
+}
+
+header div:last-child .menu div{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    width: 100%;    
+}
+header div:last-child .menu div span:first-child{
+    font-size: 4em;
+    color: var(--border-color);
+}
+header div:last-child .menu div span:last-child{
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+header div:last-child .menu div h3{
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--hover-color);        
+}
+header div:last-child .menu div i{
+    font-size: 1em;
+    color: var(--text-color);
+    font-weight: 200;
+    opacity: 0.7;
+}
+header div:last-child .menu .profilelabel{
+    text-align: center;
+    width: 100%;
+    padding: 1em;
+    color: var(--text-color);
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: all .3s ease;
+    margin-bottom: .5em;
+}
+header div:last-child .menu .profilelabel:hover{
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+header div:last-child .menu section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: .5em;
+}
+header div:last-child .menu section label{
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all .3s ease;
+    font-size: .8em;
+    border-radius: 10px;
+    border-color: var(--border-color);
+    box-shadow: var(--shadow);
+    margin-bottom: .5em;
+}
+header div:last-child .menu section label:hover{
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+header div:last-child .menu section input{
+    display: none;
+}
+#light:checked ~ label[for="light"]{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+#dark:checked ~ label[for="dark"]{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+header div:last-child .menu a{
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all .3s ease;
+    font-size: .8em;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+}
+header div:last-child .menu a:hover{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+main .div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav{
+    height: 100%;
+    background-color: var(--background-color);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav label{
+    width: 100%;
+    min-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    padding: 1em 1.5em;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all .3s ease;
+    font-size: .8em;
+    cursor: pointer;
+}
+nav label:hover{
+    background-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+}
+@media screen and (max-width: 600px) {
+    nav label{
+        justify-content: center;
+    }
+    nav label span:last-child{
+        display: none;
+    }
+}
+@media screen and (max-width: 450px) {
+    main .div{
+        flex-direction: column;
+    }
+    nav{
+        width: 100%;
+        height: fit-content;
+        flex-direction: row;
+    }
+    nav label{
+        justify-content: center;
+    }
+    nav label span:last-child{
+        display: none;
+    }
+}
+
+/* Profile */
+#profile{
+    display: none;
+}
+.psec-cover{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 11;
+    background-color: black;
+    opacity: 0.5;
+}
+.profile-section{
+    position: fixed;
+    z-index: 12;
+    top: 0;
+    right: -110%;
+    width: 100dvw;
+    max-width: 20em;
+    height: 100dvh;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+.profile-section .navhead{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1.5em;
+}
+.navhead label{
+    cursor: pointer;
+    padding: 1em;
+    font-size: .6em;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    transition: all .3s ease;
+}
+.navhead label:hover{    
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    border-color: var(--hover-color);
+}
+.profilecontent{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 100%;
+    overflow-y: scroll;
+}
+.profilecontent span{
+    font-size: 10em;
+    text-align: center;
+    color: var(--border-color);
+}
+.profilecontent .div2{
+    padding: 0 1.5em 1em 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+    width: 100%;
+}
+.profilecontent p{
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.profilecontent .buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5em
+}
+.profilecontent .div2 button, .profilecontent .div2 label{
+    text-align: center;
+    font-size: .9em;
+    padding: 1em;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;  
+    width: 100%;
+}
+.profilecontent .div2 button{
+    margin-top: 1em;
+}
+.profilecontent .div2 label{
+    color: hsl(0, 100%, 60%);
+    border: 1px solid hsl(0, 100%, 60%);
+    
+}
+.profilecontent .div2 button:hover{
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.profilecontent .div2 label:hover{
+    border-color: hsl(0, 100%, 60%);
+    background-color: hsl(0, 100%, 60%);
+    color: white;
+}
+
+#profile:checked ~ .psec-cover{
+    display: block;
+}
+#profile:checked ~ .profile-section{
+    right: 0;
+}
+
+.confirm-container div{
+    width: 100%;
+    display: flex;
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+.confirm-container div button, .confirm-container div label{
+    text-align: center;
+    padding: 1em;
+    font-size: .9em;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 1000000px;
+    cursor: pointer;
+}
+.confirm-container div button{
+    border-color: hsl(0, 100%, 60%);
+    color: hsl(0, 100%, 60%);
+    background-color: transparent;
+}
+.confirm-container div button:hover{
+    border-color: hsl(0, 100%, 60%);
+    background-color: hsl(0, 100%, 60%);
+    color: white;
+}
+.confirm-container div label:hover{
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.confirm-container h4{
+    color: hsl(0, 100%, 60%);    
+}
+.confirm-container p{
+    color: var(--text-color);    
+}
+#confirm-message{
+    display: none;
+}
+#confirm-message:checked ~ .confirm-container{
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+#confirm-message:checked ~ .overlay{
+    display: block;
+}
+
+/*Section*/
+#section{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#section .section{
+    position: absolute;
+    top: 0;
+    left: -110%;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+#section .section h2{
+    margin-bottom: .5em;
+    color: var(--hover-color);
+}
+#section .section h3{
+    color: var(--hover-color);
+}
+#section .section h3 i{
+    color: var(--text-color);
+    font-weight: 300;
+    opacity: 0.6;
+}
+.mustlogin{
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--border-color);
+}
+.contact, .favorite{
+    overflow-y: hidden;
+}
+.contact .firstdiv .top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.contact .top label{
+    margin-left: auto;
+    cursor: pointer;
+    padding: .9em;
+    font-size: .8em;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+}
+.contact .top label:hover{
+    background-color: var(--primary-color);
+}
+.add-contact-label{
+    position: absolute;
+    right: 2em;
+    bottom: 1em;
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+    padding: .8em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.add-contact-label:hover{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+.contact-list, .favorite-list{
+    margin-top: .5em;
+    height: 100%;
+    overflow-y: auto;
+}
+.contact-list .i, .favorite-list .i{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: hsla(0, 0%, 50%, 0.7);
+    padding: 2em;
+}
+.contact .contact-item, .favorite .contact-item{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: .2em;
+    color: var(--text-color);
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+.contact .contact-item .contact-name, .favorite .contact-item .contact-name{
+    padding: .7em 1em;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.contact .contact-item:hover, .favorite .contact-item:hover{
+    background-color: hsla(0, 0%, 50%, 0.2);
+}
+.contact .contact-item .fa-trash, .favorite .contact-item .fa-heart{
+    padding: .8em;
+    color: var(--primary-color);
+}
+.contact .contact-item .fa-trash:hover, .favorite .contact-item .fa-heart:hover{
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
+
+.div .input{
+    display: none;
+}
+#homesec:checked ~ #section .home{
+    left: 0;
+    top: 0;
+}
+#contactsec:checked ~ #section .contact{
+    left: 0;
+    top: 0;
+}
+#favoritesec:checked ~ #section .favorite{
+    left: 0;
+    top: 0;
+}
+#helpsec:checked ~ #section .help{
+    left: 0;
+    top: 0;
+}
+
+#homesec:checked ~ nav .homesec-toggle{
+    background-color: var(--primary-color);
+}
+#contactsec:checked ~ nav .contactsec-toggle{
+    background-color: var(--primary-color);
+}
+#favoritesec:checked ~ nav .favoritesec-toggle{
+    background-color: var(--primary-color);
+}
+#helpsec:checked ~ nav .helpsec-toggle{
+    background-color: var(--primary-color);
+}
+
+/*Home section*/
+.card-container input[type='checkbox']{
+    display: none;
+}
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    margin: 2em 0;
+}
+@media screen and (max-width: 1000px) {
+    .card-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 500px) {
+    .card-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.cards{
+    padding: 2em 2em;
+    border-radius: 2em;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5em;
+    cursor: pointer;
+}
+.cards:hover{
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.cards i{
+    font-size: 1.5em;
+    padding: .8em;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+.cards h4{
+    text-align: center;
+}
+.cards li{
+    padding: .5em 0;
+    border-bottom: 1px solid var(--text-color);
+}
+.cards li:last-child{
+    border: none;
+}
+
+.actions{
+    padding: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5em;
+    border-top: 1px solid var(--border-color);
+}
+.actions p{
+    flex: 1 0 100%;
+}
+.actions label{
+    cursor: pointer;
+    padding: .7em 1em;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10000px;
+}
+.actions label:hover{
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/*Contact Form*/
+
+main #addcontactform{
+    display: none;
+}
+.contact-form{
+    position: fixed;
+    z-index: 12;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0, 0);
+    width: 80dvw;
+    max-width: 30em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: .5em;
+    padding: 1.5em;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+}
+.contact-form h3{
+    grid-column: span 3;
+    text-align: center;
+    margin-bottom: .5em;
+    color: var(--hover-color);
+}
+.contact-form .fa-circle-user{
+    grid-column: span 1;
+    display: flex;
+    justify-content: center;
+    font-size: 5em;
+}
+.contact-form form{
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    width: 100%;
+}
+.contact-form form input{
+    padding: 1em;
+    border-radius: 10px;
+    margin-bottom: .5em;
+    outline: none;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+.contact-form form input:hover, .contact-form form input:focus{
+    border-color: var(--text-color);
+}
+.contact-form form input[type="checkbox"]{
+    display: none;
+}
+.contact-form form section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-form form section .fav-toggle-btn{
+    display: flex;
+    width: 3.5em;
+    height: 2em;
+    border-radius: 10000px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    opacity: 0.7;
+}
+.contact-form form section .fav-toggle-btn:hover{
+    border-color: var(--text-color);
+    opacity: 1;
+    cursor: pointer;
+}
+.contact-form form section .fav-toggle-btn span{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#fav-on:checked ~ .fav-toggle-btn{
+    background-color: hsl(0, 100%, 60%);
+    border-color: hsl(0, 100%, 60%);
+    opacity: 1;
+}
+#fav-on:checked ~ .fav-toggle-btn span{
+    left: 45%;
+    color: white;
+}
+
+.contact-form form div{
+    display: flex;
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+.contact-form form button, .contact-form .cancel{
+    text-align: center;
+    padding: .8em;
+    font-size: .9em;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 1000000px;
+    cursor: pointer;
+}
+.contact-form form button{
+    background-color: var(--primary-color);
+    border-color: transparent;
+    color: white;
+}
+.contact-form form button:hover, .contact-form .cancel:hover{
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.overlay, .editoverlay{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;    
+    z-index: 11;
+}
+
+main #addcontactform:checked ~ #contact-form{
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+main #addcontactform:checked ~ .overlay{
+    display: block;
+}
+
+/*Edit Form*/
+#editcontactform{
+    display: none;
+}
+#favtoggle:checked ~ .fav-toggle-btn{
+    background-color: hsl(0, 100%, 60%);
+    border-color: hsl(0, 100%, 60%);
+    opacity: 1;
+}
+#favtoggle:checked ~ .fav-toggle-btn span{
+    left: 45%;
+    color: white;
+}
+main #editcontactform:checked ~ #edit-form{
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+main #editcontactform:checked ~ .editoverlay{
+    display: block;
+}
+@media screen and (max-width: 500px){
+    .contact-form{
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+    }
+    .contact-form h3{
+        grid-column: span 1;
+    }
+    .contact-form .fa-circle-user{
+        grid-column: span 1;
+    }
+    .contact-form form{
+        grid-column: span 1;
+    }
+}
+
+/*Edit Contact Info*/
+#editcontactinfo, .edconoverlay, #edconinfoid, #favbutton{
+    display: none;
+}
+#editcontactinfo:checked ~ .edconoverlay{
+    display: flex;
+}
+#editcontactinfo:checked ~ .edconinfodiv{
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+#favbutton:checked ~ .fa-heart{
+    color: hsl(0, 100%, 60%);
+}
+.edconoverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;    
+    z-index: 11;
+}
+.edconinfodiv{
+    position: fixed;
+    z-index: 12;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0, 0);
+    width: 80dvw;
+    max-width: 22em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    padding: .5em 1.5em 1.5em 1.5em;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+}
+.edconinfodiv div{
+    flex: 1 0 100%;
+    display: flex;    
+    align-items: center;
+    gap: .8em;
+}
+.edconinfodiv div .fa-x{
+    margin-right: auto;
+    cursor: pointer;
+    padding: 1em;
+    font-size: .6em;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+}
+.edconinfodiv div .fa-x:hover{
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    border-color: var(--hover-color);
+}
+.edconinfodiv div .fa-heart, .edconinfodiv div .fa-user-pen, .edconinfodiv div .fa-trash{
+    color: var(--border-color);
+    filter: drop-shadow(var(--shadow));
+    font-size: 1.2em; 
+    cursor: pointer;
+}
+.edconinfodiv div .fa-user-pen, .edconinfodiv div .fa-trash{
+    color: var(--text-color);
+    filter: drop-shadow(var(--shadow));
+    font-size: 1.2em; 
+    cursor: pointer;
+}
+.edconinfodiv div .fa-heart:hover{
+    color: var(--primary-color);
+}
+.edconinfodiv div .fa-user-pen:hover{
+    color: var(--secondary-color);
+}
+.edconinfodiv div .fa-trash{
+    opacity: 0.7;
+}
+.edconinfodiv div .fa-trash:hover{
+    color: hsl(0, 100%, 60%);
+    opacity: 1;
+}
+.edconinfodiv .fa-circle-user{
+    text-align: center;
+    font-size: 4em;
+}
+.edconinfodiv section{
+    flex: 1 0;
+}
+.edconinfodiv p{    
+    padding: .2em 0;
+}
+.edconinfodiv p strong{
+    color: #f5f7fa;
+    background: var(--border-color);
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: .8em;
+    padding: .3em .5em;
+    border-radius: 5px;
+    text-align: center;
+    width: fit-content;
+}
+.edconinfodiv p span{
+    color: var(--text-color);
+    font-weight: normal;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#editid{
+    display: none;
+}
+
+/* Help Page */
+.faq-section {
+    margin: 1em 0;
+}
+
+.faq-item {
+    margin: 10px 0;
+    
+}
+
+.faq-toggle {
+    display: none;
+}
+
+.faq-question {
+    display: block;
+    padding: 1em;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+.faq-question:hover{
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+.faq-answer {
+    display: none;
+    padding: 10px;
+    border-left: 3px solid var(--secondary-color);
+    margin-top: 5px;
+}
+
+.faq-toggle:checked + .faq-question + .faq-answer {
+    display: block;
+}
+
+.support-section {
+    margin-bottom: 1em;
+}
+.support-section a{
+    color: var(--hover-color);
+    font-style: italic;
+}
+.support-section a:hover{
+    text-decoration: underline;
+    color: var(--secondary-color);
+}
+.readdocs{
+    font-size: .8em;
+    width: fit-content;
+    padding: .5em .7em;
+    border-radius: 5px;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.readdocs:hover{
+    color: #f5f7fa;
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+/* Search Contacts */
+
+#searchcontacts{
+    display: none;
+}
+.searchtop{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .2em;
+}
+.searchtop .fa-x, .searchtop .fa-search{
+    cursor: pointer;
+    padding: .8em;
+    font-size: .8em;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+}
+.searchtop .fa-x:hover, .searchtop .fa-search:hover{
+    color: white;
+    background-color: var(--primary-color);
+}
+.searchtop #searchInput{
+    margin-left: auto;
+    padding: .5em .8em;
+    border-radius: 10000px;
+    border: 1px solid var(--border-color);
+    background: none;
+    outline: none;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+.searchtop #searchInput:hover, .searchtop #searchInput:focus{
+    border-color: var(--text-color);
+    opacity: 1;
+}
+.searchtop .fa-search{
+    margin-right: auto;
+}
+.firstdiv{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+.seconddiv{
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+#searchcontacts:checked ~ .firstdiv{
+    display: none;
+}
+#searchcontacts:checked ~ .seconddiv{
+    display: flex;
+}

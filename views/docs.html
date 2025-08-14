@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book Documentation</title>
+    <link rel="shortcut icon" href="public/resources/white logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+    <header>        
+        <img src="public/resources/white logo.png" alt="logo">
+        <h2>Contact-Book Project Documentation</h2>
+    </header>
+
+    <aside>
+    <nav>
+        <div>
+            <a href="#overview" title="Overview"><i class="fas fa-list-alt"></i><span>Overview</span></a>
+            <a href="#features" title="Features"><i class="fas fa-rocket"></i><span>Features</span></a>
+            <a href="#tech" title="Tech Stack"><i class="fas fa-cogs"></i><span>Tech Stack</span></a>
+            <a href="#structure" title="Project Structure"><i class="fas fa-folder-open"></i><span>Project Structure</span></a>
+            <a href="#installation" title="Installation"><i class="fas fa-download"></i><span>Installation</span></a>
+            <a href="#usage" title="Usage"><i class="fas fa-key"></i><span>Usage</span></a>
+            <a href="#faqs" title="FAQs"><i class="fas fa-question-circle"></i><span>FAQs</h1></span></a>
+            <a href="#screenshots" title="Screenshots"><i class="fas fa-images"></i><span>Screenshots</span></a>
+            <a href="#disclaimer" title="Disclaimer"><i class="fas fa-exclamation-triangle"></i><span>Disclaimer</span></a>
+            <a href="#license" title="License"><i class="fas fa-file-contract"></i><span>License</span></a>
+        </div>    
+    </nav>
+
+    <main>
+        <section id="overview">
+            <h2><i class="fas fa-list-alt"></i> Overview</h2>
+            <p>
+                The Contact Book is a lightweight web application designed for storing, managing, 
+                and retrieving personal or business contact information. Built with 
+                <b>HTML</b>, <b>CSS</b>, and <b>Node.js (Express)</b>, it uses local JSON file storage 
+                to maintain data without requiring a database.
+            </p>
+            <b>NOTE:</b>
+            <ul>
+                <li><i class="fas fa-circle-exclamation"></i> This project is a learning-based application designed to demonstrate key backend and frontend development concepts using Node.js and Express.</li>
+                <li><i class="fas fa-circle-exclamation"></i> It serves as a practice project for understanding routing, file storage using JSON, request handling, and basic project structure.</li>
+                <li><i class="fas fa-circle-exclamation"></i> It is not intended for real-world production use.</li>
+            </ul>
+        </section> 
+
+        <section id="features">
+            <h2><i class="fas fa-rocket"></i> Features</h2>
+            <ul>
+                <li><i class="fas fa-circle-check"></i> <b>User Registration and Login</b> - Users can create an account and log in using stored data from a JSON file.</li>
+                <li><i class="fas fa-circle-check"></i> <b>Forgot Password</b> - Reset password using a security question and registered email.</li>
+                <li><i class="fas fa-circle-check"></i> <b>Contact Management</b> - Add, edit, delete, and mark contacts as favorites.</li>
+                <li><i class="fas fa-circle-check"></i> <b>Persistent Storage</b> - Data is stored in JSON files rather than a database (for learning purposes).</li>
+                <li><i class="fas fa-circle-check"></i> <b>Responsive UI</b> - Optimized for both desktop and mobile devices.</li>
+                <li><i class="fas fa-circle-check"></i> <b>Basic REST API Endpoints</b> - Includes routes for creating, reading, updating, and deleting data.</li>
+                <li><i class="fas fa-circle-check"></i> <b>Static File Serving</b> - HTML files are served to the browser.</li>
+            </ul>
+        </section>
+
+        <section id="tech">
+            <h2><i class="fas fa-cogs"></i> Tech Stack</h2>
+            <p> The Contact Book is built using a combination of technologies to provide a seamless user experience and efficient data management.</p>            
+            <ul>
+                <li><i class="fas fa-code"></i> <b>Node.js</b> - JavaScript runtime for server-side logic.</li>
+                <li><i class="fas fa-code"></i> <b>Express.js</b> - Web framework for building the application.</li>
+                <li><i class="fas fa-code"></i> <b>HTML/CSS</b> - Frontend structure styling</li>
+                <li><i class="fas fa-code"></i> <b>JSON</b> - Data storage format for user and contact information.</li>
+            </ul>
+        </section>
+
+        <section id="structure">
+            <h2><i class="fas fa-folder-open"></i> Project Structure</h2>
+            <p>This structure ensures separation of concerns for better maintainability:</p>
+            <pre>
+Contact-Book/
+├── UsersContacts/       <i>Stores each user's contacts list</i>
+├── views/               <i>Contains all frontend resources</i>
+│   ├── public/          <i>Contians CSS and JS files for frontend</i>
+│   │   ├── resources/   <i>Contains images used throughout the application</i>
+│   ├── docs.html
+│   ├── home.html
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── resetpass.html
+├── Contacts.js          <i>Contact logic</i>
+├── routers.js           <i>Route definitions</i>
+├── server.js            <i>Server entry point</i>
+├── Users.js             <i>User account logic</i>
+├── users.json           <i>Stored user accounts</i>
+├── package.json         <i>Dependencies and scripts</i>
+└── README.md            <i>Project documentation</i>
+            </pre>
+        </section>
+
+        <section id="installation">
+            <h2><i class="fas fa-download"></i> Installation</h2>
+            <p>To set up the Contact Book application, follow these steps:</p>
+            <ol>
+                <li>
+                    <h3>Prerequisites</h3>
+                    Ensure you have the following installed:
+                    <ul>
+                        <li>Node.js (version 14 or above recommended)</li>
+                        <li>npm (comes with Node.js)</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Clone the repository</h3>
+                    <pre>git clone https://github.com/primespark001/Contact-Book-Web-App.git</pre>
+                </li>
+                <li>
+                    <h3>Navigate to project directory</h3>
+                    <pre>cd contact-book</pre>
+                </li>
+                <li>
+                    <h3>Install dependencies</h3>
+                    <pre>npm install</pre>
+                </li>
+                <li>
+                    <h3>Run the development server</h3>
+                    <pre>npm run dev # or npm start</pre>
+                    <p>This will start the server on <code>http://localhost:5500</code> by default.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="usage">
+            <h2><i class="fas fa-key"></i> Usage</h2>
+            <ol>
+                <li>Open <code>index.html</code> in a browser.</li>
+                <li>Register by providing your details and a security question.</li>
+                <li>Login to access your contact list.</li>
+                <li>Use the interface to add, edit, delete, or favorite contacts.</li>
+                <li>Recover lost credentials via the password reset page.</li>
+            </ol>
+        </section>
+
+        <!-- FAQs -->
+        <section id="faqs">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <h3><i class="fas fa-cogs"></i> Program FAQs</h3>
+                <div class="faq">
+                    <input type="checkbox" id="p1">
+                    <label for="p1"><i class="fas fa-caret-right"></i> What is this program used for?</label>
+                    <div class="answer">It is designed to manage user accounts and store contact information securely.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p2">
+                    <label for="p2"><i class="fas fa-caret-right"></i> Do I need an internet connection to use it?</label>
+                    <div class="answer">If running locally, you can use it offline. Online features require internet.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p3">
+                    <label for="p3"><i class="fas fa-caret-right"></i> Is this program free to use?</label>
+                    <div class="answer">Yes, it's completely free as it's intended for learning purposes.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p4">
+                    <label for="p4"><i class="fas fa-caret-right"></i> Can I use this for a real business?</label>
+                    <div class="answer">It's not optimized for production use, but you can adapt it for small-scale needs.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p5">
+                    <label for="p5"><i class="fas fa-caret-right"></i> What technologies does it use?</label>
+                    <div class="answer">It uses HTML, CSS, JavaScript, Bootstrap, and JSON for data storage.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p6">
+                    <label for="p6"><i class="fas fa-caret-right"></i> How are users stored?</label>
+                    <div class="answer">Users are stored in a JSON file in the project directory for persistence.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p7">
+                    <label for="p7"><i class="fas fa-caret-right"></i> Is there authentication for the API?</label>
+                    <div class="answer">No, this is a basic setup without authentication for simplicity.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="p8">
+                    <label for="p8"> <i class="fas fa-caret-right"></i> Do I need a database for this project?</label>
+                    <div class="answer">Not really, this project uses JSON files for data storage. It's great for learning purposes without setting up a database.</div>
+                </div>
+            </div>
+
+            <!-- Users Section -->
+            <div class="faq-section">
+                <h3><i class="fas fa-user"></i> Users FAQs</h3>
+                <!-- 10 Questions -->
+                <div class="faq">
+                    <input type="checkbox" id="u1">
+                    <label for="u1"><i class="fas fa-caret-right"></i> How do I register as a user?</label>
+                    <div class="answer">On the registration page, fill in the registration form with your details and submit.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u2">
+                    <label for="u2"><i class="fas fa-caret-right"></i> Can I have multiple accounts?</label>
+                    <div class="answer">Yes, but with different emails because, each email can only be linked to one account.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u3">
+                    <label for="u3"><i class="fas fa-caret-right"></i> How do I reset my password?</label>
+                    <div class="answer">Use the “Forgot Password” option on the login page.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u4">
+                    <label for="u4"><i class="fas fa-caret-right"></i> Can I update my email address?</label>
+                    <div class="answer">Not yet, but this feature may be added in later versions.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u5">
+                    <label for="u5"><i class="fas fa-caret-right"></i> Is my information safe?</label>
+                    <div class="answer">All data is stored locally in JSON files. It's generally safe on your device, but not as secure as a database..</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u6">
+                    <label for="u6"><i class="fas fa-caret-right"></i> How can I delete my account?</label>
+                    <div class="answer">On the home page, navigate to your profile through the <c class="fas fa-bars"></c> menu button.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u7">
+                    <label for="u7"><i class="fas fa-caret-right"></i> What happens if I delete my account?</label>
+                    <div class="answer">All contacts associated with your account will also be deleted.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u8">
+                    <label for="u8"><i class="fas fa-caret-right"></i> What if I forget my username?</label>
+                    <div class="answer">Login requires your email and password only.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u9">
+                    <label for="u9"><i class="fas fa-caret-right"></i> How do I log out?</label>
+                    <div class="answer">Click the <c>Logout</c> button in your profile.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="u10">
+                    <label for="u10"><i class="fas fa-caret-right"></i> Can I change my theme preference?</label>
+                    <div class="answer">Yes. Choose your preferred theme on the <c class="fas fa-bars"></c> navigation menu.</div>
+                </div>
+            </div>
+
+            <!-- Contacts Section -->
+            <div class="faq-section">
+                <h3><i class="fas fa-address-book"></i> Contacts FAQs</h3>
+                <!-- 10 Questions -->
+                <div class="faq">
+                    <input type="checkbox" id="c1">
+                    <label for="c1"><i class="fas fa-caret-right"></i> How do I add a new contact?</label>
+                    <div class="answer">On the contacts section, click the <c class="fas fa-plus"></c> plus button then fill in the 'Add Contact' form and click “Save.”</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c2">
+                    <label for="c2"><i class="fas fa-caret-right"></i> Can I store multiple phone numbers for a contact?</label>
+                    <div class="answer">Not yet, but this feature may be added in later versions.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c3">
+                    <label for="c3"><i class="fas fa-caret-right"></i> How do I edit a contact?</label>
+                    <div class="answer">Click the contact you want to edit, then click the <c class="fas fa-user-pen"></c> edit button and edit the contact</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c4">
+                    <label for="c4"><i class="fas fa-caret-right"></i> Can I delete a contact?</label>
+                    <div class="answer">Yes, use the <c class="fas fa-trash"></c> delete button on the contact or in the contact's details view.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c5">
+                    <label for="c5"><i class="fas fa-caret-right"></i> Is there a search feature for contacts?</label>
+                    <div class="answer">Yes, you can search only by name</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c6">
+                    <label for="c6"><i class="fas fa-caret-right"></i> Can I import contacts from another app?</label>
+                    <div class="answer">Not yet, but this feature may be added in later versions.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c7">
+                    <label for="c7"><i class="fas fa-caret-right"></i> How do I mark a contact as a favorite?</label>
+                    <div class="answer">Click the star icon beside the contact’s name.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c8">
+                    <label for="c8"><i class="fas fa-caret-right"></i> Can I group contacts?</label>
+                    <div class="answer">Not yet, but this feature may be added in later versions.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c9">
+                    <label for="c9"><i class="fas fa-caret-right"></i> How many contacts can I store?</label>
+                    <div class="answer">There's no fixed limit, but performance may slow with thousands of entries.</div>
+                </div>
+                <div class="faq">
+                    <input type="checkbox" id="c10">
+                    <label for="c10"><i class="fas fa-caret-right"></i> Are my contacts shared with anyone?</label>
+                    <div class="answer">No, all contacts are private and stored securely.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screenshots">
+            <h2><i class="fas fa-images"></i> Screenshots</h2>
+            <p>Below are sample screenshots showcasing the application's UI:</p>
+            <div>
+                <img src="public/resources/landing-page.png" alt="Landing Page" class="imgs">
+                <img src="public/resources/registration-page.png" alt="Registration Page" class="imgs">
+                <img src="public/resources/login-page.png" alt="Login Page" class="imgs"></label>
+                <img src="public/resources/resetpass-page.png" alt="Password Reset Page" class="imgs">
+                <img src="public/resources/home-page.png" alt="Home Page" class="imgs"></label>
+                <img src="public/resources/contacts-section.png" alt="Contacts Section" class="imgs">
+                <img src="public/resources/favcontacts-section.png" alt="Favorite Contacts" class="imgs">
+                <img src="public/resources/code.png" alt="Code Example" class="imgs">
+            </div>
+        </section>
+           
+        <div class="imginfo" id="imginfo">
+            <button type="button" onclick="closeimg()" class="fas fa-x" title="Close"></button>
+            <img src="public/resources/landing-page.png" alt="" id="dimg">
+        </div>
+
+        <!-- License -->
+        <section id="disclaimer">
+            <h2><i class="fas fa-exclamation-triangle"></i> Disclaimer</h2>
+            <div class="note">
+                This application is intended for <b>educational purposes only</b>.  
+                It lacks production-level security, scalability, and performance optimizations.  
+                Do not use it to store sensitive real-world data.  
+                The author bears no responsibility for any misuse or data loss.
+            </div>
+        </section>
+
+        <section id="license">
+            <h2><i class="fas fa-file-contract"></i> License</h2>
+            <p>This project is open-source and free to modify</p>
+        </section>
+    </main>
+    </aside>
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Contact Book Docs. All rights reserved.
+    </footer>
+
+
+    <script>
+        const imginfo = document.getElementById('imginfo');
+        const imgs = document.querySelectorAll('.imgs');
+        const dimg = document.getElementById('dimg');
+
+        imgs.forEach(img => {            
+            img.addEventListener('click', event => {
+                const src = event.target.src;
+                dimg.src = src;
+                imginfo.style.transform = 'translate(-50%, -50%) scale(100%, 100%)';
+            });           
+        });
+
+        function closeimg(){
+            imginfo.style.transform = 'translate(-50%, -50%) scale(0%, 0%)';
+        }
+    </script>
+</body>
+</html>

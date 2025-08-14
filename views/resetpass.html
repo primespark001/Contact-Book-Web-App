@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book</title>
+    <link rel="shortcut icon" href="public/resources/white logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div class="dcover"></div>
+    <p class="pmess" id="pmess"></p>
+    <header class="header">
+        <img src="public/resources/hov-sec gradient logo.png" alt="logo">
+        <p>Contact Book</p>
+        <a href="https://wa.me/+2348165254494" target="_blank" rel="noopener" title="Chat" class="fab fa-whatsapp"></a>
+    </header>
+    <div class="div">
+        <form class="forgotpass" id="forgotpassform">
+            <h3>Reset Password <a href="/login" class="fas fa-arrow-left" title="Back"></a></h3>
+            <input type="email" name="email" required placeholder="Email" id="rsUserEmail">
+            <select name="securityQuestion" required title="securityQuestion" id="rsSecurityQuestion">
+                <option value="">--Select a Security Question--</option>
+                <option value="pet">What is the name of your first pet?</option>
+                <option value="school">What was the name of your primary school?</option>
+                <option value="color">What is your favorite color?</option>
+                <option value="birthCity">In what city were you born?</option>
+                <option value="teacher">What was the name of your favorite teacher?</option>
+                <option value="street">What is the name of the street you grew up on?</option>
+                <option value="movie">What is your favorite movie?</option>
+                <option value="friend">What was the name of your best friend in secondary school?</option>
+                <option value="phoneModel">What was the model of your first phone?</option>
+                <option value="hospital">What is the name of the hospital where you were born?</option>
+            </select>
+            <input type="text" name="securityAnswer" id="rsSecurityAnswer" placeholder="Answer" required>
+            <input type="password" name="newPassword" id="rsNewPassword" placeholder="Set new password" required>
+            <button type="button" title="Submit" onclick="resetPass()">Submit</button>           
+            <p>Don't have an account? 
+                <a href="/register" class="form-label" title="Register">Register</a>
+            </p>
+        </form>
+    </div>       
+    
+    
+    <script src="public/allpages.js"></script>
+</body>
+</html>

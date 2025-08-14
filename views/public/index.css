@@ -1,0 +1,295 @@
+:root{
+    --primary-color: #364d63;
+    --secondary-color: #205891;
+    --background-color: #1a1a1a;
+    --text-color: #f5f7fa;
+    --border-color: hsla(0, 0%, 100%, 0.3);
+    --shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    --hover-color: #4a90e2;
+}
+::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--border-color);
+    border-radius: 1000px;
+}
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--secondary-color);
+}
+::-webkit-scrollbar-gutter{
+    background-color: transparent;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+    border: .1em solid  transparent;
+    text-decoration: none;
+    transition: all .3s ease;
+    color: var(--text-color);
+}
+* button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all .3s ease;
+}
+body{
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        var(--background-color),
+        var(--secondary-color),
+        var(--background-color)
+        );
+}
+body .dcover{
+    z-index: 0;
+    position: fixed;
+    left: -200%;
+    filter: blur(100px);
+    background: linear-gradient(to left,
+        hsla(0, 0%, 0%, 0),
+        var(--secondary-color),
+        var(--secondary-color),
+        hsla(0, 0%, 0%, 0));
+    height: 200%;
+    width: 120%;
+    opacity: 0.7;
+    transform: rotate(30deg);
+    animation: move 20s infinite;
+}
+@keyframes move {
+    0%{
+        left: -200%;
+    }
+    100%{
+        left: 200%;
+    }
+}
+.pmess{
+    position: fixed;
+    z-index: 10;
+    width: 90dvw;
+    max-width: max-content;
+    top: -110%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: var(--shadow);
+    background-color: #f5f7fa;
+    text-align: left;
+    padding: 1em;
+    font-weight: bold;
+    border-left: 5px solid transparent;
+}
+.header{
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .3em;
+    padding: .5em 2em;
+    color: var(--text-color);
+    font-weight: 500;
+    box-shadow: var(--shadow);
+    background: hsla(0, 0%, 0%, 0.3);
+}
+.header img{
+    height: 1.5em;
+}
+.header a{
+    margin-left: auto;
+    padding: .5em;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+.header a:hover{
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+.div{
+    z-index: 1;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2em 0;
+}
+.hero-section{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero-text{
+    text-align: center;
+    margin-bottom: 1em;
+}
+.hero-text h1{
+    font-size: 2em;
+    font-weight: 900;
+    margin-bottom: .5em;
+    color: transparent;
+    background: linear-gradient(45deg,
+    var(--text-color),
+    var(--hover-color));
+    background-clip: text;
+}
+.hero-buttons{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
+}
+.hero-buttons .btn{
+    width: fit-content;
+    text-align: center;
+    padding: .8em 1.2em;
+    border-radius: 100000px;
+    box-shadow: var(--shadow);
+}
+.btn-primary{
+    background-color: var(--secondary-color);
+}
+.btn-secondary{
+    border: 1px solid var(--border-color);
+}
+.btn-primary:hover{
+    background-color: var(--hover-color);
+}
+.btn-secondary:hover{
+    border-color: var(--hover-color);
+    background-color: var(--hover-color);
+}
+
+form{
+    margin: auto;
+    width: 80dvw;
+    max-width: 30em;
+    padding: 2em;
+    border: 1px solid var(--border-color);
+    border-radius: 1.5em;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: .8em;
+}
+form h3{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+form h3 a{
+    margin-left: auto;
+    color: var(--text-color);
+    font-size: .7em;
+    padding: .7em;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+form h3 a:hover{
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+form input::placeholder{
+    color: var(--text-color);
+    opacity: 0.7;
+    font-style: italic;
+}
+form input, form select{
+    padding: 1em;
+    border-radius: .5em;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    outline: none;
+}
+form input:hover, form select:hover{
+    border-color: var(--text-color);
+}
+form input:focus, form select:focus{
+    border: 2px solid var(--text-color);
+}
+form select option{
+    background: var(--background-color);
+    padding: 1em 0;
+    color: var(--text-color);
+}
+form select option{
+    background: var(--background-color);
+    padding: 1em 0;
+    color: var(--text-color);
+}
+form button{
+    padding: 1em;
+    box-shadow: var(--shadow);
+    border-radius: 100000px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+form button:hover{
+    background-color: var(--hover-color);
+}
+form .forgot-pass{
+    font-size: .8em;
+    padding: 1em;
+    border-radius: 1000000px;
+    border: 1px solid var(--border-color);
+    font-style: italic;
+    text-align: center;
+    color: var(--text-color);
+}
+form .forgot-pass:hover{
+    border-color: var(--hover-color);
+    background: var(--hover-color);
+}
+form p{
+    text-align: center;
+}
+form p a{
+    text-decoration: underline;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--text-color);
+}
+form p a:hover{
+    color: var(--hover-color);
+}
+form .passinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;    
+}
+form .passinfo i{
+    width: 100%;
+    padding: 1em;
+    border-left: 5px solid var(--secondary-color);
+    color: var(--background-color);
+    background-color: var(--text-color);
+}
+form .passinfo a{
+    padding: 1em;
+    box-shadow: var(--shadow);
+    border-radius: 100000px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}

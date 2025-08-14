@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book</title>
+    <link rel="shortcut icon" href="public/resources/white logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body onload="homeLoad()">
+    <p class="pmess" id="pmess"></p>
+    <main>        
+        <header>
+            <h1><img src="public/resources/black logo.png" alt="logo" id="logoimg"></img>&nbsp;Contact Book</h1>
+            <div>
+                <div class="profile-bar">
+                    <a href="/login" title="Login" id="login-link">Login</a>
+                    <label for="menu" class="fas fa-bars" title="Menu"></label>
+                </div>
+                <input type="checkbox" name="" id="menu" class="menu-toggle">
+                <div class="menu">
+                    <div>
+                        <span class="fas fa-circle-user"></span>
+                        <span>
+                            <h3 id="husername1">Guest</h3>
+                            <i id="huseremail1">email</i>
+                        </span>
+                    </div>
+                    <label for="profile" title="Profile" class="profilelabel"><span class="fas fa-user"></span> Profile</label>
+                    <section class="themecontainer">
+                        <input type="radio" name="theme" id="light" onclick="userTheme('light')">                        
+                        <input type="radio" name="theme" id="dark" onclick="userTheme('dark')">
+                        <label for="light"><span class="fas fa-sun" title="Light"></span> Light</label>
+                        <label for="dark"><span class="fas fa-moon" title="Dark"></span> Night</label>
+                    </section>
+                    <a href="https://coff.ee/primespark001" title="Buy Ma a Coffee" target="_blank" rel="noopener"><span class="fas fa-coffee"></span> Buy me a coffee</a>
+                    <a href="https://github.com/primespark001" title="Prime Spark" target="_blank" rel="noopener"><span class="fas fa-link"></span> Prime Spark</a>
+                </div>
+                <label for="menu" class="menucover" title="Menu"></label>
+            </div>            
+        </header>
+
+        <div class="div">  
+            <input type="radio" name="sections" id="homesec" checked class="input">
+            <input type="radio" name="sections" id="contactsec" class="input" onclick='loadContacts()'>
+            <input type="radio" name="sections" id="favoritesec" class="input" onclick='loadFavContacts()'>
+            <input type="radio" name="sections" id="helpsec" class="input">
+
+            <nav>
+                <label for="homesec" class="homesec-toggle" title="Home" onclick="closeSearch()"><span class="fas fa-home"></span> <span>Home</span></label>
+                <label for="contactsec" class="contactsec-toggle" title="Contacts" onclick="closeSearch()"><span class="fas fa-user"></span> <span>Contacts</span></label>
+                <label for="favoritesec" class="favoritesec-toggle" title="Favourites" onclick="closeSearch()"><span class="fas fa-heart"></span> <span>Favorites</span></label>
+                <label for="helpsec" class="helpsec-toggle" title="Help" onclick="closeSearch()"><span class="fas fa-info-circle"></span> <span>Help</span></label>
+            </nav>
+
+            <section id="section">
+                <div class="section home" id="home">
+                    <h2>Welcome <span id="husername2">Guest. (Please Login)</span></h2>
+                    <p>Glad to have you here! Here is what you can do.</p>
+                    <div class="card-container">                        
+                        <input type="checkbox" name="" id="card1" title="Add contact" onclick="card()">
+                        <input type="checkbox" name="" id="card2" title="Edit contact" onclick="card()">
+                        <input type="checkbox" name="" id="card3" title="Tag as favorite" onclick="card()">
+                        <input type="checkbox" name="" id="card4" title="Delete contact" onclick="card()">
+
+                        <label class="cards card1" for="card1" id="label1">
+                            <i class="fas fa-user-plus"></i>
+                            <h4>Add contact</h4>
+                        </label>
+                        <label class="cards card2" for="card2" id="label2">
+                            <i class="fas fa-user-pen"></i>
+                            <h4>Edit contact</h4>
+                        </label>
+                        <label class="cards card3" for="card3" id="label3">
+                            <i class="fas fa-heart"></i>
+                            <h4>Add to favorite</h4>
+                        </label>
+                        <label class="cards card4" for="card4" id="label4">
+                            <i class="fas fa-trash"></i>
+                            <h4>Delete contact</h4>
+                        </label>                        
+                    </div>
+
+                    <div class="actions">
+                        <p>Get Started</p>
+                        <label for="contactsec" title="Contacts">View Contacts</label>
+                        <label for="favoritesec" title="Favourites">View Favorites</label>
+                        <label for="helpsec" title="Help">Get Help</label>
+                    </div>
+
+                </div>
+
+                <div class="section contact" id="contacts">
+                    <input type="checkbox" name="" id='searchcontacts' title="Search" onclick="clearSearch()">
+                    <div class='firstdiv'>
+                        <div class="top">
+                            <h3>Contacts <i id="numofcontacts"></i></h3>
+                            <label for="searchcontacts" title="Search" class="fas fa-search"></label>
+                        </div>
+
+                        <label for="addcontactform" class="fas fa-plus add-contact-label" title="Add contact"></label>
+                        <ul class="contact-list" id="contact-list">
+                            <!-- Contacts will be dynamically loaded here -->
+                            <!-- <li  class="contact-item">
+                                <label for="editcontactinfo" class="contact-name" onclick="edit()"><i class="fas fa-user-circle"></i>&nbsp;&nbsp;John Doe</label>
+                                <span class="fas fa-trash" onclick="delContact()" title="Delete"></span>
+                            </li> -->
+                        </ul>  
+                    </div>
+
+                    <div class="seconddiv">
+                        <div class="searchtop">
+                            <label for="searchcontacts" title="Close" class="fas fa-x"></label>
+                            <input type="search" id='searchInput' placeholder="Search...">
+                            <button type="button" title="Search" onclick="search()" class="fas fa-search"></button>
+                        </div>                        
+                        <ul class="contact-list" id="searchcontainer">
+                            <!-- Searched Contacts will be dynamically loaded here -->
+                            <!-- <li  class="contact-item">
+                                <label for="editcontactinfo" class="contact-name" onclick="edit()"><i class="fas fa-user-circle"></i>&nbsp;&nbsp;John Doe</label>
+                                <span class="fas fa-trash" onclick="delContact()" title="Delete"></span>
+                            </li> -->
+                        </ul>
+                    </div>        
+                </div> 
+
+                <div class="section favorite" id="favorites">
+                    <h3>Favorites <i id="numoffavcontacts"></i></h3>
+                    <ul class="favorite-list" id="favorite-list">
+                        <!-- Favorite contacts will be dynamically loaded here -->
+                         <!-- <li class="contact-item">
+                            <span class="contact-name"><i class="fas fa-user-circle"></i>&nbsp;&nbsp;John Doe</span>
+                            <span class="fas fa-heart" onclick="favContact()" title="Favourite"></span>
+                         </li> -->
+                    </ul>
+                </div>
+
+                <div class="section help" id="help">
+                    <h3><i class="fas fa-info-circle"></i> Help Center</h3>
+
+                    <!-- FAQ Accordion -->
+                    <div class="faq-section">
+                        <h4>Frequently Asked Questions</h4>
+                        
+                        <div class="faq-item">
+                            <input type="checkbox" id="faq1" class="faq-toggle">
+                            <label for="faq1" class="faq-question">How do I add a new contact?</label>
+                            <div class="faq-answer">Click the "+" icon or 'Add Contact' button and fill in the details.</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <input type="checkbox" id="faq2" class="faq-toggle">
+                            <label for="faq2" class="faq-question">How do I edit or delete a contact?</label>
+                            <div class="faq-answer">Click on the contact name to reveal options to edit or delete.</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <input type="checkbox" id="faq3" class="faq-toggle">
+                            <label for="faq3" class="faq-question">How do I mark a contact as favorite?</label>
+                            <div class="faq-answer">Open the contact and click the heart icon to add or remove from favorites.</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Support -->
+                    <div class="support-section">
+                        <h4>Still Need Help?</h4>
+                        <p>Contact us via <a href="https://wa.me/+2348165254494">WhatsApp</a> or message us via 
+                            <a href="mailto:munachinedu4jesus123@gmail.com" title="Help" >email</a> or 
+                            <a href="docs.html" title="Docs" class="readdocs">Read the Docs</a>
+                        </p>
+                    </div>                    
+                </div>
+            </section>
+
+            <input type="checkbox" name="" id="editcontactinfo">
+            <label for="editcontactinfo" class='edconoverlay'></label>
+            <div class="edconinfodiv">
+                <p id="edconinfoid"></p>
+                <div>
+                    <label for="editcontactinfo" class="fas fa-x" title="Close"></label>                           
+                    <input type="checkbox" name="" id="favbutton" onclick="favContact()">
+                    <label for="favbutton" class="fas fa-heart" title="Favorite"></label>
+                    <label for="editcontactform" class="fas fa-user-pen" title="Edit contact"></label>
+                    <label for="" class="fas fa-trash" title="Delete" onclick="delContact()"></label>
+                </div>
+                <span class="fas fa-circle-user"></span>
+                <section>
+                    <p><strong>Name:</strong> <span id="edconinfoname">name</span></p>
+                    <p><strong>Phone:</strong> <span id="edconinfophone">phone number</span></p>
+                </section>
+            </div>
+
+            <input type="checkbox" name="contactform" id="addcontactform" onclick='clearAddContactInput()'>
+            <div class="contact-form" id="contact-form">
+                <h3><i class="fas fa-plus"></i>&nbsp; Add Contact</h3>
+                <span class='fas fa-circle-user'></span>
+                <form id="contactForm">
+                    <label for="addname">Name:</label>
+                    <input type="text" name="name" id="addname" required autofocus>
+                                        
+                    <label for="addphoneno">Phone:</label>
+                    <input type="tel" name="phone" id="addphoneno" required>
+
+                    <section>
+                        <input type="checkbox" name="fav-on" id="fav-on" title="Favorite">
+                        <label>Add to Favorite</label>
+                        <label for="fav-on" title="Favorite" class="fav-toggle-btn"><span class="fas fa-heart"></span></label>
+                    </section>
+                    
+                    <div class="buttons">
+                        <button type="button" onclick="addContact()" title="Save">Save</button>
+                        <label for="addcontactform" class="cancel" title="Cancel">Cancel</label>
+                    </div>
+                </form>                
+            </div>
+            <label for="addcontactform" class="overlay"></label>
+
+            <input type="checkbox" name="editform" id="editcontactform" onclick="collectEditInfo()">
+            <div class="edit-form contact-form" id="edit-form">
+                <h3><i class="fas fa-user-pen"></i>&nbsp; Edit Contact</h3>
+                <span class="fas fa-circle-user"></span>                
+                <form id="editForm">
+                    <p id="editid"></p>
+                    <label for="editname">Name:</label>
+                    <input type="text" name="name" id="editname" required autofocus>
+                                        
+                    <label for="editphoneno">Phone:</label>
+                    <input type="tel" name="phone" id="editphoneno" required>
+
+                    <section>
+                        <input type="checkbox" name="favtoggle" id="favtoggle" title="Favorite">
+                        <label>Add to Favorite</label>
+                        <label for="favtoggle" title="Favorite" class="fav-toggle-btn"><span class="fas fa-heart"></span></label>
+                    </section>
+                    
+                    <div class="buttons">
+                        <button type="button" onclick="editContact()" title="Save">Save</button>
+                        <label for="editcontactform" class="cancel" title="Cancel">Cancel</label>
+                    </div>
+                </form>                
+            </div>
+            <label for="editcontactform" class="editoverlay"></label>            
+        </div>
+
+
+        <input type="checkbox" name="" id="profile" title="profile" onclick="display()">
+        <label for="profile" class="psec-cover"></label>
+        <div class="profile-section">
+            <div class="navhead">
+                <h3>Profile</h3>
+                <label for="profile" class="fas fa-x"></label>
+            </div>
+            <div class="profilecontent">
+                <span class='fas fa-circle-user'></span>
+                <div class="div2">
+                    <p>Username : <strong id="husername3">Guest</strong></p>
+                    <p>Email : <strong id="huseremail2">email</strong></p>
+                    <p>Phone : <strong id="huserphoneno">+(0)Number</strong></p>
+                    <div class="buttons">
+                        <button type="button" onclick="logout()">Log Out <i class="fas fa-arrow-right-from-bracket"></i></button>
+                        <label for="confirm-message" class="label">Delete Account <i class="fas fa-trash"></i></label>
+                    </div>
+                </div>
+            </div>
+
+            <input type="checkbox" name="" id="confirm-message">
+            <div class="confirm-cover overlay"></div>
+            <div class="confirm-container contact-form">
+                <h4>Delete Account?</h4>
+                <p>
+                    You will lose all your information and contacts.<br>
+                    <strong>THIS CANNOT BE UNDONE!</strong>
+                </p>
+                <div>
+                    <button type="button" onclick="delAccount()">Proceed</button>
+                    <label for="confirm-message">Cancel</label>
+                </div>
+            </div>
+        </div>
+             
+    </main>
+    <footer>
+        &copy;2025 Made by <a href="https://github.com/primespark001" title="Prime Spark" target="_blank" rel="noopener">Prime Spark</a>
+    </footer>
+
+
+    <script src="public/allpages.js"></script>
+</body>
+</html>
